@@ -14,6 +14,13 @@ class Coord(models.Model):
     longitude = models.FloatField(max_length=50, verbose_name='Долгота')
     height = models.IntegerField(verbose_name='Высота')
 
+    def __str__(self):
+        return f'{self.latitude},{self.longitude},{self.height}'
+
+    class Meta:
+        verbose_name = 'Координаты'
+        verbose_name_plural = 'Координаты'
+
 
 LEVEL = [
     ('1a', '1A'),
@@ -34,6 +41,13 @@ class Level(models.Model):
     summer = models.CharField(max_length=2, choices=LEVEL, verbose_name='Лето', null=True, blank=True, )
     autumn = models.CharField(max_length=2, choices=LEVEL, verbose_name='Осень', null=True, blank=True, )
     spring = models.CharField(max_length=2, choices=LEVEL, verbose_name='Весна', null=True, blank=True, )
+
+    def __str__(self):
+        return f'{self.winter} {self.summer} {self.autumn} {self.spring}'
+
+    class Meta:
+        verbose_name = 'Уровень сложности перевала'
+        verbose_name_plural = 'Уровни сложности перевала'
 
 
 class Pereval(models.Model):
@@ -57,9 +71,23 @@ class Pereval(models.Model):
     user_id = models.ForeignKey(MyUser, on_delete=models.CASCADE)
     level_id = models.ForeignKey(Level, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f'{self.pk} {self.beauty_title}'
+
+    class Meta:
+        verbose_name = 'Перевал'
+        verbose_name_plural = 'Перевалы'
+
 
 class Images(models.Model):
     title = models.CharField(max_length=255, verbose_name='Название')
     data = models.URLField(verbose_name='Изображение', null=True, blank=True)
-    pereval_id = models.ForeignKey(Pereval, related_name='photo', on_delete=models.CASCADE)
+    pereval_id = models.ForeignKey(Pereval, related_name='images', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.pk} {self.title}'
+
+    class Meta:
+        verbose_name = 'Изображения'
+        verbose_name_plural = 'Изображения'
 
