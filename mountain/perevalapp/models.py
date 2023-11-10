@@ -82,7 +82,7 @@ class Pereval(models.Model):
 class Images(models.Model):
     title = models.CharField(max_length=255, verbose_name='Название')
     data = models.URLField(verbose_name='Изображение', null=True, blank=True)
-    pereval_id = models.ForeignKey(Pereval, related_name='photo', on_delete=models.CASCADE)
+    pereval_id = models.ForeignKey(Pereval, related_name='images', on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.pk} {self.title}'

@@ -11,7 +11,7 @@ class MyUserSerializer(serializers.ModelSerializer):
 
     def save(self, **kwargs):
         self.is_valid()
-        user = MyUser.objects.filter(mail=self.validated_data.get('email'))
+        user = MyUser.objects.filter(email=self.validated_data.get('email'))
         if user.exists():
             return user.first()
         else:
@@ -34,7 +34,7 @@ class CoordSerializer(serializers.ModelSerializer):
 class ImagesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Images
-        fields = ['pk', 'image']
+        fields = '__all__'
 
 
 class LevelSerializer(serializers.ModelSerializer):
@@ -44,11 +44,11 @@ class LevelSerializer(serializers.ModelSerializer):
 
 
 class PerevalSerializer(WritableNestedModelSerializer):
-    user = MyUserSerializer()
-    coord = CoordSerializer()
-    level = LevelSerializer(allow_null=True)
+    user_id = MyUserSerializer()
+    coord_id = CoordSerializer()
+    level_id = LevelSerializer(allow_null=True)
     images = ImagesSerializer(many=True)
 
     class Meta:
         model = Pereval
-        fields = ['id', 'beauty_title', 'title', 'other_titles', 'connect', 'add_time', 'level', 'user', 'coord', 'images']
+        fields = ['id', 'beauty_title', 'title', 'other_titles', 'connect', 'add_time', 'level_id', 'user_id', 'coord_id', 'images']

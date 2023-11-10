@@ -19,7 +19,7 @@ class CoordsViewSet(viewsets.ModelViewSet):
     serializer_class = CoordSerializer
 
 
-class PhotoViewSet(viewsets.ModelViewSet):
+class ImagesViewSet(viewsets.ModelViewSet):
     queryset = Images.objects.all()
     serializer_class = ImagesSerializer
 
