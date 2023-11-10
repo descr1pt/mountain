@@ -14,11 +14,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from rest_framework import routers
 from django.contrib import admin
-from django.urls import path
-from perevalapp.views import PerevalAPIView
+from django.urls import path, include
+from perevalapp.views import PerevalViewSet
+
+router = routers.SimpleRouter()
+router.register(r'pereval', PerevalViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/perevallist/', PerevalAPIView.as_view())
-]
+    path('submitData/', include(router.urls)),
+    ]
