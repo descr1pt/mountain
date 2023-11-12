@@ -49,6 +49,25 @@ class PerevalSerializer(WritableNestedModelSerializer):
     level_id = LevelSerializer(allow_null=True)
     images = ImagesSerializer(many=True)
 
+    def validate(self, data):
+        if self.instance is not None:
+            instance_user = self.instance.user_id
+            data_user = data.get('user_id')
+            user_fields_for_validation = [
+                instance_user.email != data_user['email'],
+                instance_user.phone != data_user['phone'],
+                instance_user.fam != data_user['fam'],
+                instance_user.name != data_user['name'],
+                instance_user.otc != data_user['otc'],
+            ]
+            if data_user is not None and any(user_fields_for_validation):
+                raise serializers.ValidationError(
+                    {
+                        'Ошибка': 'Данные пользователя заменить нельзя',
+                    }
+                )
+            return data
+
     class Meta:
         model = Pereval
         fields = ['id', 'beauty_title', 'title', 'other_titles', 'connect', 'add_time', 'level_id', 'user_id', 'coord_id', 'images']
