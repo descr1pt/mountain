@@ -66,7 +66,6 @@ class PerevalSerializer(WritableNestedModelSerializer):
                         'Ошибка': 'Данные пользователя заменить нельзя',
                     }
                 )
-            return data
         return data
 
     class Meta:
