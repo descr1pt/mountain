@@ -51,22 +51,22 @@ class Level(models.Model):
 
 
 class Pereval(models.Model):
-    NEW = 'NW'
-    PENDING = 'PN'
-    ACCEPTED = 'AC'
-    REJECTED = 'RJ'
+    NEW = 'NEW'
+    PENDING = 'PENDING'
+    ACCEPTED = 'ACCEPTED'
+    REJECTED = 'REJECTED'
     STATUS_CHOICES = (
-        ('NW', 'New'),
-        ('AC', 'Accepted'),
-        ('PN', 'Pending'),
-        ('RJ', 'Rejected'),
+        ('NEW', 'Новая информация'),
+        ('ACCEPTED', 'Информация принята'),
+        ('PENDING', 'В процессе'),
+        ('REJECTED', 'Информация отклонена'),
     )
     beauty_title = models.CharField(max_length=255, verbose_name='Общее название', default=None)
     title = models.CharField(max_length=255, verbose_name='Название горы', null=True, blank=True)
     other_titles = models.CharField(max_length=255, verbose_name='Альтернативное название горы')
     connect = models.TextField(null=True, blank=True)
     add_time = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=2, choices=STATUS_CHOICES, default=NEW)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default=NEW)
     coord_id = models.OneToOneField(Coord, on_delete=models.CASCADE)
     user_id = models.ForeignKey(MyUser, on_delete=models.CASCADE)
     level_id = models.ForeignKey(Level, on_delete=models.CASCADE)

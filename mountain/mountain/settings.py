@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'perevalapp',
     'rest_framework',
+    'django_filters',
 
 
 ]
