@@ -45,7 +45,6 @@ class MyUserViewSet(viewsets.ModelViewSet):
     serializer_class = MyUserSerializer
 
 
-
 class CoordsViewSet(viewsets.ModelViewSet):
     queryset = Coord.objects.all()
     serializer_class = CoordSerializer
