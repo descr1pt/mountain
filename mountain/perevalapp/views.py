@@ -40,21 +40,21 @@ class PerevalViewSet(viewsets.ModelViewSet):
             )
 
 
-class MyUserViewSet(viewsets.ModelViewSet):
-    queryset = MyUser.objects.all()
-    serializer_class = MyUserSerializer
-
-
-class CoordsViewSet(viewsets.ModelViewSet):
-    queryset = Coord.objects.all()
-    serializer_class = CoordSerializer
-
-
-class ImagesViewSet(viewsets.ModelViewSet):
-    queryset = Images.objects.all()
-    serializer_class = ImagesSerializer
-
-
-class LevelViewSet(viewsets.ModelViewSet):
-    queryset = Level.objects.all()
-    serializer_class = LevelSerializer
+# class MyUserViewSet(viewsets.ModelViewSet):
+#     queryset = MyUser.objects.all()
+#     serializer_class = MyUserSerializer
+#
+#
+# class CoordsViewSet(viewsets.ModelViewSet):
+#     queryset = Coord.objects.all()
+#     serializer_class = CoordSerializer
+#
+#
+# class ImagesViewSet(viewsets.ModelViewSet):
+#     queryset = Images.objects.all()
+#     serializer_class = ImagesSerializer
+#
+#
+# class LevelViewSet(viewsets.ModelViewSet):
+#     queryset = Level.objects.all()
+#     serializer_class = LevelSerializer

@@ -41,7 +41,7 @@ class MountSerializerTestCase(TestCase):
     def setUp(self):
         user_1 = MyUser.objects.create(email="Test_1", phone=1111, fam="Test_1", name="Test_1", otc="Test_1")
         user_2 = MyUser.objects.create(email="Test_2", phone=2222, fam="Test_2", name="Test_2", otc="Test_2")
-        coords_1 = Coord.objects.create(latitude=5.0002, longitude=5.0002, height=100)
+        coords_1 = Coord.objects.create(latitude=5.0002, longitude=5.0002, height=200)
         coords_2 = Coord.objects.create(latitude=5.0022, longitude=5.0022, height=200)
         level_1 = Level.objects.create(winter='1a', spring='1a', summer='1a', autumn='1a')
         level_2 = Level.objects.create(winter='2a', spring='2a', summer='2a', autumn='2a')
@@ -62,7 +62,9 @@ class MountSerializerTestCase(TestCase):
                 "title": "title_1",
                 "other_titles": "other_titles_1",
                 "connect": None,
+                "add_time": str(self.mount_1.add_time),
                 "level_id": {
+                    "id": 1,
                     "winter": "1a",
                     "summer": "1a",
                     "autumn": "1a",
@@ -76,11 +78,12 @@ class MountSerializerTestCase(TestCase):
                     "otc": "Test_1"
                 },
                 "coord_id": {
-                    "latitude": 5.0002,
-                    "longitude": 5.0002,
-                    "height": 100
+                    "latitude": 5.0022,
+                    "longitude": 5.0022,
+                    "height": 200
                 },
-                "images": []
+                "images": [],
+                "status": "NEW"
             },
             {
                 "id": 2,
@@ -88,7 +91,9 @@ class MountSerializerTestCase(TestCase):
                 "title": "title_2",
                 "other_titles": "other_titles_2",
                 "connect": None,
+                "add_time": str(self.mount_2.add_time),
                 "level_id": {
+                    "id": 2,
                     "winter": "2a",
                     "summer": "2a",
                     "autumn": "2a",
@@ -106,8 +111,12 @@ class MountSerializerTestCase(TestCase):
                     "longitude": 5.0022,
                     "height": 200
                 },
-                "images": []
-            }
+                "images": [],
+                "status": "NEW"
+            },
         ]
 
+        print(expected_data)
+        print('++++++++++++++++++++++++++++++')
+        print(serializer_data)
         self.assertEqual(serializer_data, expected_data)
