@@ -95,7 +95,7 @@ class PerevalViewSet(viewsets.ModelViewSet):
 2. Статус модерации данной информации должен быть статусом 'NEW', при остальных статусах модерации, изменение данных невозможно 
 
 ### Данный проект есть на хостинге pythonanywhere
-ссылка
+[ссылка](https://descr1pt.pythonanywhere.com/submitData/pereval/)
 
 ### Пример JSON файла с данными.
 
