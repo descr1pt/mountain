@@ -2,11 +2,11 @@ from django.db import models
 
 
 class MyUser(models.Model):
-    email = models.EmailField(max_length=255)
-    phone = models.CharField(max_length=11)
-    fam = models.CharField(max_length=255)
-    name = models.CharField(max_length=255)
-    otc = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255, verbose_name='Почта')
+    phone = models.CharField(max_length=11, verbose_name='Номер телефона')
+    fam = models.CharField(max_length=255, verbose_name='Фамилия',)
+    name = models.CharField(max_length=255, verbose_name='Имя',)
+    otc = models.CharField(max_length=255, verbose_name='Отчество')
 
 
 class Coord(models.Model):
