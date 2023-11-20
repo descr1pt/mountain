@@ -16,11 +16,11 @@ class MountApiTestCase(APITestCase):
         user_2 = MyUser.objects.create(email='Test_2', phone=2222, fam='Test_2', name='Test_2', otc='Test_2')
         coords_1 = Coord.objects.create(latitude=5.0002, longitude=5.0002, height=200)
         coords_2 = Coord.objects.create(latitude=5.0022, longitude=5.0002, height=200)
-        level_1 = Level.objects.create(winter='1a', spring='1a', summer='1a', autumn='1a')
-        level_2 = Level.objects.create(winter='2a', spring='2a', summer='2a', autumn='2a')
-        self.mount_1 = Pereval.objects.create(user_id=user_1, beauty_title='beauty_title_1', title="title_1",
+        level_1 = Level.objects.create(id=1, winter='1a', spring='1a', summer='1a', autumn='1a')
+        level_2 = Level.objects.create(id=2, winter='2a', spring='2a', summer='2a', autumn='2a')
+        self.mount_1 = Pereval.objects.create(id=1, user_id=user_1, beauty_title='beauty_title_1', title="title_1",
                                             other_titles='other_titles_1', coord_id=coords_1, level_id=level_1)
-        self.mount_2 = Pereval.objects.create(user_id=user_2, beauty_title='beauty_title_2', title="title_2",
+        self.mount_2 = Pereval.objects.create(id=2, user_id=user_2, beauty_title='beauty_title_2', title="title_2",
                                             other_titles='other_titles_2', coord_id=coords_2, level_id=level_2)
 
     def test_get_list(self):
@@ -45,12 +45,12 @@ class MountSerializerTestCase(TestCase):
         user_2 = MyUser.objects.create(email="Test_2", phone=2222, fam="Test_2", name="Test_2", otc="Test_2")
         coords_1 = Coord.objects.create(latitude=5.0002, longitude=5.0002, height=200)
         coords_2 = Coord.objects.create(latitude=5.0002, longitude=5.0002, height=200)
-        level_1 = Level.objects.create(winter='1a', spring='1a', summer='1a', autumn='1a')
-        level_2 = Level.objects.create(winter='2a', spring='2a', summer='2a', autumn='2a')
-        self.mount_1 = Pereval.objects.create(user_id=user_1, beauty_title="beauty_title_1", title="title_1",
+        level_1 = Level.objects.create(id=1, winter='1a', spring='1a', summer='1a', autumn='1a')
+        level_2 = Level.objects.create(id=2, winter='2a', spring='2a', summer='2a', autumn='2a')
+        self.mount_1 = Pereval.objects.create(id=1, user_id=user_1, beauty_title="beauty_title_1", title="title_1",
                                             other_titles="other_titles_1",
                                             coord_id=coords_1, level_id=level_1)
-        self.mount_2 = Pereval.objects.create(user_id=user_2, beauty_title="beauty_title_2", title="title_2",
+        self.mount_2 = Pereval.objects.create(id=2, user_id=user_2, beauty_title="beauty_title_2", title="title_2",
                                             other_titles="other_titles_2",
                                             coord_id=coords_2, level_id=level_2)
 
